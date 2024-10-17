@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Resources:
+  TrendingHeadlinesFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.8
+      Environment:
+        Variables:
+          NEWS_API_KEY: !Ref NewsApiKey
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /headlines
+            Method: get
+
+Parameters:
+  NewsApiKey:
+    Type: String
+    Description: API key for NewsAPI
+
+Outputs:
+  ApiUrl:
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/headlines"
