@@ -33,8 +33,9 @@ jobs:
         AWS_DEFAULT_REGION: us-east-1
       run: |
         sam deploy \
-          --stack-name trending-media-headlines-stack \  # Name of your CloudFormation stack
-          --capabilities CAPABILITY_IAM \  # Required to allow SAM to create IAM roles
-          --parameter-overrides NewsApiKey=${{ secrets.NEWS_API_KEY }} \  # Pass parameters if needed
-          --no-confirm-changeset \  # Skip confirmation prompts
-          --no-fail-on-empty-changeset  # Prevent failure if no changes detected
+          --stack-name trending-media-headlines-stack \
+          --capabilities CAPABILITY_IAM \
+          --parameter-overrides NewsApiKey=${{ secrets.NEWS_API_KEY }} \
+          --no-confirm-changeset \
+          --no-fail-on-empty-changeset \
+          --resolve-s3  # Automatically create and manage an S3 bucket for deployment
