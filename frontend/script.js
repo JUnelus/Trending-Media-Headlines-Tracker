@@ -1,4 +1,4 @@
-const API_URL = "YOUR_API_GATEWAY_URL";  // Replace with your API Gateway URL
+const API_URL = "https://tzp238azja.execute-api.us-east-1.amazonaws.com";  // Replace with your API Gateway URL
 
 async function fetchHeadlines() {
     try {
